@@ -1,16 +1,26 @@
-/// IMPORT
+/// DEPENDENCY IMPORT ///
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-/// FILE IMPORTS
+/// FILE IMPORTS ///
 import Login from "./src/screens/auth/Login";
 import SignUp from "./src/screens/auth/SignUp";
 import HomePage from "./src/screens/main/HomePage";
+import TaxiMaths from "./src/screens/main/TaxiMaths";
+import LocalMaps from "./src/screens/main/LocalMaps";
+import Community from "./src/screens/main/Community";
+import Profile from "./src/screens/main/Profile";
 
+/// VARIABLES ///
 const Stack = createNativeStackNavigator();
+const BottomTab = createBottomTabNavigator();
 
+/// MAIN APPLICATION STACKS ///
+
+// AUTHENTICATION STACK
 const AuthStack = () => {
   return (
     <Stack.Navigator initialRouteName="Login">
@@ -28,13 +38,20 @@ const AuthStack = () => {
   );
 };
 
+// MAIN APP STACK
 const MainStack = () => {
   return (
-    <Stack.Navigator>
-      <Stack.Screen name="Home" component={HomePage} />
-    </Stack.Navigator>
+    <BottomTab.Navigator>
+      <BottomTab.Screen name="TaxiMath" component={TaxiMaths} />
+      <BottomTab.Screen name="LocalMaps" component={LocalMaps} />
+      <BottomTab.Screen name="Community" component={Community} />
+      <BottomTab.Screen name="Profile" component={Profile} />
+    </BottomTab.Navigator>
   );
 };
+
+// HOME STACKS
+const HomeStack = () => {};
 
 export default function App() {
   return (
