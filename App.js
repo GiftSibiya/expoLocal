@@ -4,6 +4,10 @@ import { StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import {
+  MaterialTopTabBar,
+  createMaterialTopTabNavigator,
+} from "@react-navigation/material-top-tabs";
 
 /// FILE IMPORTS ///
 import Login from "./src/screens/auth/Login";
@@ -12,11 +16,17 @@ import HomePage from "./src/screens/main/HomePage";
 import TaxiMaths from "./src/screens/main/TaxiMaths";
 import LocalMaps from "./src/screens/main/LocalMaps";
 import Community from "./src/screens/main/Community";
+
+// TAXI SCREENS
 import Profile from "./src/screens/main/Profile";
+import FirstPrice from "./src/components/FirstPrice";
+import SecondPrice from "./src/components/SecondPrice";
+import ThirdPrice from "./src/components/ThirdPrice";
 
 /// VARIABLES ///
 const Stack = createNativeStackNavigator();
 const BottomTab = createBottomTabNavigator();
+const TopTab = createMaterialTopTabNavigator();
 
 /// MAIN APPLICATION STACKS ///
 
@@ -42,7 +52,7 @@ const AuthStack = () => {
 const MainStack = () => {
   return (
     <BottomTab.Navigator>
-      <BottomTab.Screen name="TaxiMath" component={TaxiMaths} />
+      <BottomTab.Screen name="TaxiMath" component={TaxiMathsStack} />
       <BottomTab.Screen name="LocalMaps" component={LocalMaps} />
       <BottomTab.Screen name="Community" component={Community} />
       <BottomTab.Screen name="Profile" component={Profile} />
@@ -50,8 +60,18 @@ const MainStack = () => {
   );
 };
 
+// TAXI APP STACK
+const TaxiMathsStack = () => {
+  return (
+    <TopTab.Navigator>
+      <TopTab.Screen name="FirstPrice" component={FirstPrice} />
+      <TopTab.Screen name="SecondPrice" component={SecondPrice} />
+      <TopTab.Screen name="ThirdPrice" component={ThirdPrice} />
+    </TopTab.Navigator>
+  );
+};
+
 // HOME STACKS
-const HomeStack = () => {};
 
 export default function App() {
   return (
