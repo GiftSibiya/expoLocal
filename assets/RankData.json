@@ -1,0 +1,44 @@
+{
+  "taxiRanks": [
+    {
+      "id": 1,
+      "name": "Ivory Park Taxi Rank",
+      "coordinates": {
+        "latitude": -26.007073,
+        "longitude": 28.183106
+      },
+      "image": "central_taxi_image.jpg",
+      "activeTime": "04:00 - 12:00",
+      "destinations": [
+        {
+          "destination": "Kya Sands",
+          "price": 28
+        },
+        {
+          "destination": "Johannesburg",
+          "price": 30
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Score Taxi Rank",
+      "coordinates": {
+        "latitude": -25.988162,
+        "longitude": 28.17547
+      },
+      "image": "city_square_taxi_image.jpg",
+      "activeTime": "9 AM - 10 PM",
+      "destinations": [
+        {
+          "destination": "Business District",
+          "price": 25
+        },
+        {
+          "destination": "Restaurant Area",
+          "price": 18
+        }
+      ]
+    }
+  ]
+}

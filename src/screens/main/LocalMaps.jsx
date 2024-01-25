@@ -1,10 +1,22 @@
+/// DEPENDENCY IMPORTS ///
+
 import { View, Text, StyleSheet } from "react-native";
 import React from "react";
-import MapView from "react-native-maps";
+import MapView, { Marker } from "react-native-maps";
 
+///--///
+
+/// FILE IMPORTS ///
+
+import RankData from "../../../assets/RankData.json";
+
+///--///
+console.log(RankData);
 const LocalMaps = () => {
   return (
     <View style={styles.container}>
+      {/* THIS IS THE MAIN MAP VIEW WITH THE ORIGION SET AT TEMBISA*/}
+
       <MapView
         style={styles.map}
         initialRegion={{
@@ -13,7 +25,16 @@ const LocalMaps = () => {
           latitudeDelta: 0.0922,
           longitudeDelta: 0.0421,
         }}
-      />
+      >
+        {RankData.taxiRanks.map((taxiRanks) => (
+          <Marker
+            key={taxiRanks.id}
+            coordinate={taxiRanks.coordinates}
+            title={taxiRanks.name}
+            description={`Active Time: ${taxiRanks.activeTime}`}
+          />
+        ))}
+      </MapView>
     </View>
   );
 };
