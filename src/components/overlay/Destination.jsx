@@ -9,17 +9,23 @@ import React from "react";
 import Quantum from "../../../assets/images/quantum.jpg";
 ///--///
 
-const Destination = () => {
+const Destination = ({ destination }) => {
+  /// FUCTIONS ///
+
+  console.log(destination.price);
+
+  ///--///
+
   return (
     <View style={styles.container}>
       <View style={styles.cabImage}>
         <Image source={Quantum} style={styles.taxiImage}></Image>
       </View>
       <View style={styles.destinationDetails}>
-        <Text style={styles.destinationText}> JOHANNESBURG</Text>
+        <Text style={styles.destinationText}> {destination.destination}</Text>
       </View>
       <View style={styles.destinationCost}>
-        <Text style={styles.cost}>R28.0</Text>
+        <Text style={styles.cost}>R{destination.price}</Text>
       </View>
     </View>
   );

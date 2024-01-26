@@ -11,8 +11,12 @@
         "price": 32
       },
       {
-        "destination": "Johannesburg",
-        "price": 32
+        "destination": "Pretoria",
+        "price": 35
+      },
+      {
+        "destination": "Soweto",
+        "price": 25
       }
     ]
   },
