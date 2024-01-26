@@ -38,7 +38,7 @@ const LocalMaps = () => {
       </MapView>
 
       {/* SELECTED OVERLAY COMPONENT */}
-      <RankOverlay />
+      {/* <RankOverlay /> */}
     </View>
   );
 };
