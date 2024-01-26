@@ -9,7 +9,7 @@ import MapView, { Marker } from "react-native-maps";
 /// FILE IMPORTS ///
 
 import RankData from "../../../assets/RankData.json";
-import RankOverlay from "../../components/RankOverlay";
+import RankOverlay from "../../components/overlay/RankOverlay";
 
 ///--///
 const LocalMaps = () => {
@@ -38,7 +38,7 @@ const LocalMaps = () => {
       </MapView>
 
       {/* SELECTED OVERLAY COMPONENT */}
-      {/* <RankOverlay /> */}
+      <RankOverlay />
     </View>
   );
 };
