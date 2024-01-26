@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "name": "Ivory Park Taxi Rank",
+    "coordinates": {
+      "latitude": -26.007073,
+      "longitude": 28.183106
+    },
+    "image": "central_taxi_image.jpg",
+    "activeTime": "04:00 - 12:00"
+  },
+  {
+    "id": 2,
+    "name": "Kaalfontein Taxi Rank",
+    "coordinates": {
+      "latitude": -25.988162,
+      "longitude": 28.17547
+    },
+    "image": "city_square_taxi_image.jpg",
+    "activeTime": "04:00 - 14:00"
+  }
+]

@@ -1,18 +1,31 @@
 /// DEPENDENCY IMPORTS ///
 
 import { View, Text, StyleSheet } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import MapView, { Marker } from "react-native-maps";
 
 ///--///
 
 /// FILE IMPORTS ///
 
-import RankData from "../../../assets/RankData.json";
+// DATA
+import RankData from "../../../assets/data/RankData.json";
+
+// FILES
 import RankOverlay from "../../components/overlay/RankOverlay";
 
 ///--///
 const LocalMaps = () => {
+  /// HOOKS ///
+  const [selectedRank, setSelectedRank] = useState(null);
+  // console.log("RankData:", RankData);
+
+  ///--///
+
+  /// FUNCTIONS ///
+
+  ///--///
+
   return (
     <View style={styles.container}>
       {/* THIS IS THE MAIN MAP VIEW WITH THE ORIGION SET AT TEMBISA*/}
@@ -25,20 +38,27 @@ const LocalMaps = () => {
           latitudeDelta: 0.0922,
           longitudeDelta: 0.0421,
         }}
+        onPress={() => {
+          setSelectedRank(null);
+        }}
       >
         {/* REDNERING A MARKER FOR EVERY TAXI RANK ITEM */}
-        {RankData.taxiRanks.map((taxiRanks) => (
+        {RankData.map((RankData) => (
           <Marker
-            key={taxiRanks.id}
-            coordinate={taxiRanks.coordinates}
-            title={taxiRanks.name}
-            description={`Active Time: ${taxiRanks.activeTime}`}
+            key={RankData.id}
+            coordinate={RankData.coordinates}
+            title={RankData.name}
+            description={`Active Time: ${RankData.activeTime}`}
+            onPress={() => {
+              setSelectedRank(RankData);
+              // console.log("Marker Pressed:", selectedRank);
+            }}
           />
         ))}
       </MapView>
 
       {/* SELECTED OVERLAY COMPONENT */}
-      <RankOverlay />
+      {selectedRank && <RankOverlay RankData={selectedRank.id} />}
     </View>
   );
 };

@@ -1,29 +1,51 @@
+/// DEPENDENCY IMPORTS ///
 import { Text, View, StyleSheet, ScrollView } from "react-native";
-import React, { Component } from "react";
+import React from "react";
+
+/// FILES IMPORTS ///
+
+// JSON DATA FILES
+import RankData from "../../../assets/data/RankData.json";
+import taxis from "../../../assets/data/destinationData.json";
+
+// COMPONENTS
 import Destination from "./Destination";
 
-export class RankOverlay extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <View style={styles.overlay}>
-          {/* HEADER CONTENT */}
-          <View style={styles.overlayHeader}></View>
-          <ScrollView style={styles.destinationList}>
-            <Destination />
-            <Destination />
-            <Destination />
-            <Destination />
-            <Destination />
-            <Destination />
-          </ScrollView>
-        </View>
-      </View>
-    );
-  }
-}
+const RankOverlay = (selectedId) => {
+  /// VARIABLES ///
 
-export default RankOverlay;
+  /// THESE RETURN THE OBJECTS SELECTED ON THE RESPECTIVE MARKERS ///
+  const selectedRank = RankData.find((rank) => rank.id === selectedId.RankData);
+  const selectedTaxis = taxis.find((rank) => rank.id === selectedId.RankData);
+
+  ///--///
+
+  console.log(selectedTaxis);
+
+  return (
+    <View style={styles.container}>
+      <View style={styles.overlay}>
+        {/* HEADER CONTENT */}
+        <View style={styles.overlayHeader}>
+          <Text style={styles.rankName}> {selectedRank.name}</Text>
+          <Text style={styles.rankTime}>
+            {" "}
+            Active Time: {selectedRank.activeTime}
+          </Text>
+        </View>
+        <ScrollView style={styles.destinationList}>
+          {/* Assuming Destination component takes a single rank as a prop */}
+          {taxis.map((taxis) => {
+            <Destination key={taxis.id} />;
+          })}
+
+          {/* Destination Aove */}
+        </ScrollView>
+      </View>
+    </View>
+  );
+};
+
 const styles = StyleSheet.create({
   container: {
     position: "absolute",
@@ -42,11 +64,25 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
   },
+
   overlayHeader: {
     height: "25%",
   },
+
   destinationList: {
     height: "50%",
     borderColor: "red",
   },
+
+  rankName: {
+    textAlign: "center",
+    fontSize: 20,
+  },
+
+  rankTime: {
+    textAlign: "center",
+    fontSize: 15,
+  },
 });
+
+export default RankOverlay;

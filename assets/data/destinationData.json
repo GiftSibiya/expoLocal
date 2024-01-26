@@ -1,0 +1,28 @@
+[
+  {
+    "id": 1,
+    "Taxis": [
+      {
+        "destination": "Kya Sands",
+        "price": 28
+      },
+      {
+        "destination": "Johannesburg",
+        "price": 32
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "Taxis": [
+      {
+        "destination": "Midrand",
+        "price": 18
+      },
+      {
+        "destination": "Kempton Park",
+        "price": 25
+      }
+    ]
+  }
+]
