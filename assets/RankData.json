@@ -22,13 +22,13 @@
     },
     {
       "id": 2,
-      "name": "Score Taxi Rank",
+      "name": "Kaalfontein Taxi Rank",
       "coordinates": {
         "latitude": -25.988162,
         "longitude": 28.17547
       },
       "image": "city_square_taxi_image.jpg",
-      "activeTime": "9 AM - 10 PM",
+      "activeTime": "04:00 - 12:00",
       "destinations": [
         {
           "destination": "Business District",

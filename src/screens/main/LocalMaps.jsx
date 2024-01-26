@@ -9,9 +9,9 @@ import MapView, { Marker } from "react-native-maps";
 /// FILE IMPORTS ///
 
 import RankData from "../../../assets/RankData.json";
+import RankOverlay from "../../components/RankOverlay";
 
 ///--///
-console.log(RankData);
 const LocalMaps = () => {
   return (
     <View style={styles.container}>
@@ -26,6 +26,7 @@ const LocalMaps = () => {
           longitudeDelta: 0.0421,
         }}
       >
+        {/* REDNERING A MARKER FOR EVERY TAXI RANK ITEM */}
         {RankData.taxiRanks.map((taxiRanks) => (
           <Marker
             key={taxiRanks.id}
@@ -35,6 +36,9 @@ const LocalMaps = () => {
           />
         ))}
       </MapView>
+
+      {/* SELECTED OVERLAY COMPONENT */}
+      <RankOverlay />
     </View>
   );
 };
