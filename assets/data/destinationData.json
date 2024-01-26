@@ -9,6 +9,10 @@
       {
         "destination": "Johannesburg",
         "price": 32
+      },
+      {
+        "destination": "Johannesburg",
+        "price": 32
       }
     ]
   },

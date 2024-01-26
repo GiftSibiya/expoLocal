@@ -17,10 +17,10 @@ const RankOverlay = (selectedId) => {
   /// THESE RETURN THE OBJECTS SELECTED ON THE RESPECTIVE MARKERS ///
   const selectedRank = RankData.find((rank) => rank.id === selectedId.RankData);
   const selectedTaxis = taxis.find((rank) => rank.id === selectedId.RankData);
-
+  const selectedDestnations = taxis[parseInt(selectedId.RankData) - 1].Taxis;
   ///--///
 
-  console.log(selectedTaxis);
+  console.log(selectedDestnations);
 
   return (
     <View style={styles.container}>
@@ -35,9 +35,9 @@ const RankOverlay = (selectedId) => {
         </View>
         <ScrollView style={styles.destinationList}>
           {/* Assuming Destination component takes a single rank as a prop */}
-          {taxis.map((taxis) => {
-            <Destination key={taxis.id} />;
-          })}
+          {taxis.map((taxis) => (
+            <Destination />
+          ))}
 
           {/* Destination Aove */}
         </ScrollView>
