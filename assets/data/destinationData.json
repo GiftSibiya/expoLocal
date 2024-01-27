@@ -30,6 +30,10 @@
       {
         "destination": "Kempton Park",
         "price": 25
+      },
+      {
+        "destination": "Winnie Mandela",
+        "price": 20
       }
     ]
   }

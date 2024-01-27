@@ -1,6 +1,6 @@
 /// DEPENDENCY IMPORTS ///
 
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Image } from "react-native";
 import React, { useState } from "react";
 import MapView, { Marker } from "react-native-maps";
 
@@ -10,13 +10,15 @@ import MapView, { Marker } from "react-native-maps";
 
 // DATA
 import RankData from "../../../assets/data/RankData.json";
-
 // FILES
 import RankOverlay from "../../components/overlay/RankOverlay";
+//IMAGES
+import taxiRankIcon from "../../../assets/images/taxiRank.png";
 
 ///--///
 const LocalMaps = () => {
   /// HOOKS ///
+
   const [selectedRank, setSelectedRank] = useState(null);
   // console.log("RankData:", RankData);
 
@@ -53,7 +55,9 @@ const LocalMaps = () => {
               setSelectedRank(RankData);
               // console.log("Marker Pressed:", selectedRank);
             }}
-          />
+          >
+            <Image source={taxiRankIcon} style={styles.rankIcon} />
+          </Marker>
         ))}
       </MapView>
 
@@ -68,4 +72,8 @@ export default LocalMaps;
 const styles = StyleSheet.create({
   container: { flex: 1 },
   map: { width: "100%", height: "100%" },
+  rankIcon: {
+    height: 50,
+    width: 50,
+  },
 });

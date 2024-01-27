@@ -12,7 +12,7 @@ import Quantum from "../../../assets/images/quantum.jpg";
 const Destination = ({ destination }) => {
   /// FUCTIONS ///
 
-  console.log(destination.price);
+  // console.log(destination.price);
 
   ///--///
 
@@ -21,9 +21,10 @@ const Destination = ({ destination }) => {
       <View style={styles.cabImage}>
         <Image source={Quantum} style={styles.taxiImage}></Image>
       </View>
-      <View style={styles.destinationDetails}>
+      <View style={styles.destinationInfo}>
         <Text style={styles.destinationText}> {destination.destination}</Text>
       </View>
+
       <View style={styles.destinationCost}>
         <Text style={styles.cost}>R{destination.price}</Text>
       </View>
@@ -38,7 +39,6 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
-    borderWidth: 2,
     height: 60,
     marginVertical: 2,
     marginHorizontal: 8,
@@ -46,43 +46,46 @@ const styles = StyleSheet.create({
     overflow: "hidden",
     padding: 2,
   },
+
+  cabImage: {
+    height: "100%",
+    width: "22%",
+  },
+
   taxiImage: {
-    borderWidth: 2,
-    borderRadius: 10,
-    width: "30%",
-    height: "100%",
+    objectFit: "fill",
+    height: "90%",
+    width: "100%",
   },
-  destinationDetails: {
+
+  destinationInfo: {
     display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-around",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#32a852",
     borderRadius: 10,
-    width: "30%",
-  },
-  destinationText: {
-    textAlign: "center",
-    borderWidth: 2,
     width: 150,
-    height: "100%",
+    height: 55,
   },
+
+  destinationText: {
+    fontSize: 15,
+    fontWeight: "bold",
+    color: "white",
+  },
+
   destinationCost: {
     display: "flex",
     justifyContent: "center",
     width: "20%",
-    backgroundColor: "silver",
+    backgroundColor: "#32a852",
     borderRadius: 10,
   },
+
   cost: {
     textAlign: "center",
-    fontSize: 20,
-  },
-  cabImage: {
-    height: "100%",
-    width: "10%",
-  },
-  taxiImage: {
-    objectFit: "fill",
-    height: "90%",
-    width: "250%",
+    fontSize: 15,
+    fontWeight: "bold",
+    color: "white",
   },
 });
