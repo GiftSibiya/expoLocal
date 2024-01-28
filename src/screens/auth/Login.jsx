@@ -1,56 +1,91 @@
 /// IDEPENDENCY IMPORTS ///
-import React from "react";
+
+import React, { useState } from "react";
 import {
   View,
   Text,
   TouchableOpacity,
   StyleSheet,
   TextInput,
+  KeyboardAvoidingView,
 } from "react-native";
 ///--///
 
 /// FUCTIONS ///
 const Login = ({ navigation }) => {
+  /// HOOKS ///
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  ///--///
+
+  /// FUCNTIONS ///
   const handleLogin = () => {
     navigation.navigate("MainStack");
   };
 
   const handleSignUp = () => {
-    navigation.navigate("SignUp");
+    fireApp
+      .createUserWithEmailAndPassword(email, password)
+      .then((userCredentials) => {
+        const user = userCredentials.user;
+        console.log(user.email);
+      })
+      .catch((error) => alert(error.message));
+    // navigation.navigate("SignUp");
   };
 
   ///--///
 
   return (
-    <View style={styles.container}>
-      <View style={styles.loginHeader}></View>
-      <Text style={styles.heading}>WELCOME BACK</Text>
+    <KeyboardAvoidingView>
+      <View style={styles.container}>
+        <View style={styles.loginHeader}></View>
+        <Text style={styles.heading}>WELCOME BACK</Text>
 
-      {/* INPUT CONTAINER */}
-      <View style={styles.InputContainer}>
-        <TextInput placeholder="Email" style={styles.emailInput}></TextInput>
-        <TextInput
-          placeholder="Password"
-          style={styles.passwordInput}
-        ></TextInput>
-        <TouchableOpacity style={styles.loginBtn} onPress={handleLogin}>
-          <Text style={styles.btnText}>Login</Text>
-        </TouchableOpacity>
+        {/* INPUT CONTAINER */}
+        <View style={styles.InputContainer}>
+          {/* EMAIl */}
+
+          <TextInput
+            placeholder="Email"
+            style={styles.emailInput}
+            value={email}
+            onChange={(text) => setEmail(text)}
+          ></TextInput>
+
+          {/* PASSWORD */}
+
+          <TextInput
+            placeholder="Password"
+            style={styles.passwordInput}
+            secureTextEntry={true}
+            onChange={(text) => setPassword(text)}
+            value={password}
+          ></TextInput>
+
+          {/* -- */}
+
+          <TouchableOpacity style={styles.loginBtn} onPress={handleLogin}>
+            <Text style={styles.btnText}>Login</Text>
+          </TouchableOpacity>
+        </View>
+
+        {/* -- */}
+
+        {/* LOGIN ICONS */}
+        <View style={styles.loginIcons}></View>
+        {/* -- */}
+
+        <View style={styles.signUpCon}>
+          <Text style={styles.noAccount}>Don't have an account yet? </Text>
+          <TouchableOpacity onPress={handleSignUp}>
+            <Text style={styles.signUp}>Sign Up</Text>
+          </TouchableOpacity>
+        </View>
       </View>
-
-      {/* -- */}
-
-      {/* LOGIN ICONS */}
-      <View style={styles.loginIcons}></View>
-      {/* -- */}
-
-      <View style={styles.signUpCon}>
-        <Text style={styles.noAccount}>Don't have an account yet? </Text>
-        <TouchableOpacity onPress={handleSignUp}>
-          <Text style={styles.signUp}>Sign Up</Text>
-        </TouchableOpacity>
-      </View>
-    </View>
+    </KeyboardAvoidingView>
   );
 };
 
@@ -118,7 +153,7 @@ const styles = StyleSheet.create({
 
   loginIcons: {
     borderWidth: 2,
-    height: "20%",
+    height: "15%",
   },
 
   noAccount: {
