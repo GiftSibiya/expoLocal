@@ -36,5 +36,201 @@
         "price": 20
       }
     ]
+  },
+  {
+    "id": 3,
+    "Taxis": [
+      {
+        "destination": "Vosloorus",
+        "price": 25
+      },
+      {
+        "destination": "Dawn Park",
+        "price": 25
+      },
+      {
+        "destination": "Windmill Park",
+        "price": 25
+      },
+      {
+        "destination": "Vila Lisa",
+        "price": 25
+      },
+      {
+        "destination": "Bulhe Park",
+        "price": 25
+      },
+      {
+        "destination": "Rondebult",
+        "price": 25
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "Taxis": [
+      {
+        "destination": "Midrand",
+        "price": 18
+      },
+      {
+        "destination": "Kempton Park",
+        "price": 25
+      },
+      {
+        "destination": "Winnie Mandela",
+        "price": 20
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "Taxis": [
+      {
+        "destination": "Midrand",
+        "price": 18
+      },
+      {
+        "destination": "Kempton Park",
+        "price": 25
+      },
+      {
+        "destination": "Winnie Mandela",
+        "price": 20
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "Taxis": [
+      {
+        "destination": "Midrand",
+        "price": 18
+      },
+      {
+        "destination": "Kempton Park",
+        "price": 25
+      },
+      {
+        "destination": "Winnie Mandela",
+        "price": 20
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "Taxis": [
+      {
+        "destination": "Midrand",
+        "price": 18
+      },
+      {
+        "destination": "Kempton Park",
+        "price": 25
+      },
+      {
+        "destination": "Winnie Mandela",
+        "price": 20
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "Taxis": [
+      {
+        "destination": "Midrand",
+        "price": 18
+      },
+      {
+        "destination": "Kempton Park",
+        "price": 25
+      },
+      {
+        "destination": "Winnie Mandela",
+        "price": 20
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "Taxis": [
+      {
+        "destination": "Midrand",
+        "price": 18
+      },
+      {
+        "destination": "Kempton Park",
+        "price": 25
+      },
+      {
+        "destination": "Winnie Mandela",
+        "price": 20
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "Taxis": [
+      {
+        "destination": "Midrand",
+        "price": 18
+      },
+      {
+        "destination": "Kempton Park",
+        "price": 25
+      },
+      {
+        "destination": "Winnie Mandela",
+        "price": 20
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "Taxis": [
+      {
+        "destination": "Ebony Park",
+        "price": 20
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "Taxis": [
+      {
+        "destination": "Ivory Park",
+        "price": 28
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "Taxis": [
+      {
+        "destination": "Score",
+        "price": 23
+      },
+      {
+        "destination": "Swazi-Inn",
+        "price": 23
+      },
+      {
+        "destination": "Winnie Mandela",
+        "price": 23
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "Taxis": [
+      {
+        "destination": "Sunninghill",
+        "price": 23
+      },
+      {
+        "destination": "Kya Sands",
+        "price": 28
+      }
+    ]
   }
 ]

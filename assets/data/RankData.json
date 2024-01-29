@@ -18,5 +18,125 @@
     },
     "image": "city_square_taxi_image.jpg",
     "activeTime": "04:00 - 14:00"
+  },
+  {
+    "id": 3,
+    "name": "MTN Noord Taxi Rank",
+    "coordinates": {
+      "latitude": -26.198882,
+      "longitude": 28.047893
+    },
+    "image": "city_square_taxi_image.jpg",
+    "activeTime": "04:00 - 14:00"
+  },
+  {
+    "id": 4,
+    "name": "Ekangala Taxi Rank",
+    "coordinates": {
+      "latitude": -25.686507,
+      "longitude": 28.716744
+    },
+    "image": "city_square_taxi_image.jpg",
+    "activeTime": "04:00 - 14:00"
+  },
+  {
+    "id": 5,
+    "name": "Boksburg Taxi Center",
+    "coordinates": {
+      "latitude": -26.179605,
+      "longitude": 28.279017
+    },
+    "image": "city_square_taxi_image.jpg",
+    "activeTime": "04:00 - 14:00"
+  },
+  {
+    "id": 6,
+    "name": "Vosloorus Taxi Rank",
+    "coordinates": {
+      "latitude": -26.3425,
+      "longitude": 28.218517
+    },
+    "image": "city_square_taxi_image.jpg",
+    "activeTime": "04:00 - 14:00"
+  },
+  {
+    "id": 7,
+    "name": "Boksburg Taxi Center",
+    "coordinates": {
+      "latitude": -26.179605,
+      "longitude": 28.279017
+    },
+    "image": "city_square_taxi_image.jpg",
+    "activeTime": "04:00 - 14:00"
+  },
+  {
+    "id": 8,
+    "name": "Kempton Park Big Save Taxi Rank",
+    "coordinates": {
+      "latitude": -26.109837,
+      "longitude": 28.229533
+    },
+    "image": "city_square_taxi_image.jpg",
+    "activeTime": "04:00 - 14:00"
+  },
+  {
+    "id": 9,
+    "name": "Kwa Thema Duduza Rank",
+    "coordinates": {
+      "latitude": -26.310021,
+      "longitude": 28.3915378
+    },
+    "image": "city_square_taxi_image.jpg",
+    "activeTime": "04:00 - 14:00"
+  },
+  {
+    "id": 10,
+    "name": "Boksburg Taxi Center",
+    "coordinates": {
+      "latitude": -26.152795,
+      "longitude": 28.416644
+    },
+    "image": "city_square_taxi_image.jpg",
+    "activeTime": "04:00 - 14:00"
+  },
+  {
+    "id": 11,
+    "name": "Mall of Tembisa Taxi Rank",
+    "coordinates": {
+      "latitude": -25.958731,
+      "longitude": 28.20353
+    },
+    "image": "city_square_taxi_image.jpg",
+    "activeTime": "04:00 - 14:00"
+  },
+  {
+    "id": 12,
+    "name": "Cosmo City Taxi Rank",
+    "coordinates": {
+      "latitude": -26.01631,
+      "longitude": 27.938346
+    },
+    "image": "city_square_taxi_image.jpg",
+    "activeTime": "04:00 - 14:00"
+  },
+  {
+    "id": 13,
+    "name": "Sunninghill Taxi Rank",
+    "coordinates": {
+      "latitude": -25.038478,
+      "longitude": 28.065533
+    },
+    "image": "city_square_taxi_image.jpg",
+    "activeTime": "04:00 - 14:00"
+  },
+  {
+    "id": 14,
+    "name": "Score Taxi Rank",
+    "coordinates": {
+      "latitude": -25.981548,
+      "longitude": 28.205744
+    },
+    "image": "city_square_taxi_image.jpg",
+    "activeTime": "04:00 - 14:00"
   }
 ]
