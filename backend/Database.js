@@ -6,6 +6,8 @@ const nodemailer = require("nodemailer");
 const cors = require("cors");
 const jwt = require("jsonwebtoken");
 
+/// CHANGING THIS TO USE FIREBASE //
+
 const app = express();
 const PORT = 4000;
 app.use(cors());
@@ -19,7 +21,7 @@ mongoose
     useUnifiedTopology: true,
   })
   .then(() => {
-    console.log("Connected To Local Mongo");
+    console.log("Connected To Local Mongo, Cahnge to mongo wena");
   })
   .catch((err) => [console.log("not connecting my G")]);
 

@@ -9,6 +9,7 @@ import {
   TextInput,
   KeyboardAvoidingView,
 } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 ///--///
 
 /// FUCTIONS ///
@@ -40,51 +41,55 @@ const Login = ({ navigation }) => {
 
   return (
     <KeyboardAvoidingView>
-      <View style={styles.container}>
-        <View style={styles.loginHeader}></View>
-        <Text style={styles.heading}>WELCOME BACK</Text>
+      <SafeAreaView>
+        <View style={styles.container}>
+          <View style={styles.loginHeader}>
+            <Text style={styles.loginHeader__Text}>WELCOME BACK TO LOCAL</Text>
+          </View>
+          <Text style={styles.heading}>Sign In</Text>
 
-        {/* INPUT CONTAINER */}
-        <View style={styles.InputContainer}>
-          {/* EMAIl */}
+          {/* INPUT CONTAINER */}
+          <View style={styles.InputContainer}>
+            {/* EMAIl */}
 
-          <TextInput
-            placeholder="Email"
-            style={styles.emailInput}
-            value={email}
-            onChange={(text) => setEmail(text)}
-          ></TextInput>
+            <TextInput
+              placeholder="Email"
+              style={styles.emailInput}
+              value={email}
+              onChange={(text) => setEmail(text)}
+            ></TextInput>
 
-          {/* PASSWORD */}
+            {/* PASSWORD */}
 
-          <TextInput
-            placeholder="Password"
-            style={styles.passwordInput}
-            secureTextEntry={true}
-            onChange={(text) => setPassword(text)}
-            value={password}
-          ></TextInput>
+            <TextInput
+              placeholder="Password"
+              style={styles.passwordInput}
+              secureTextEntry={true}
+              onChange={(text) => setPassword(text)}
+              value={password}
+            ></TextInput>
+
+            {/* -- */}
+
+            <TouchableOpacity style={styles.loginBtn} onPress={handleLogin}>
+              <Text style={styles.btnText}>Login</Text>
+            </TouchableOpacity>
+          </View>
 
           {/* -- */}
 
-          <TouchableOpacity style={styles.loginBtn} onPress={handleLogin}>
-            <Text style={styles.btnText}>Login</Text>
-          </TouchableOpacity>
+          {/* LOGIN ICONS */}
+          <View style={styles.loginIcons}></View>
+          {/* -- */}
+
+          <View style={styles.signUpCon}>
+            <Text style={styles.noAccount}>Don't have an account yet? </Text>
+            <TouchableOpacity onPress={handleSignUp}>
+              <Text style={styles.signUp}>Sign Up</Text>
+            </TouchableOpacity>
+          </View>
         </View>
-
-        {/* -- */}
-
-        {/* LOGIN ICONS */}
-        <View style={styles.loginIcons}></View>
-        {/* -- */}
-
-        <View style={styles.signUpCon}>
-          <Text style={styles.noAccount}>Don't have an account yet? </Text>
-          <TouchableOpacity onPress={handleSignUp}>
-            <Text style={styles.signUp}>Sign Up</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
+      </SafeAreaView>
     </KeyboardAvoidingView>
   );
 };
@@ -100,6 +105,7 @@ const styles = StyleSheet.create({
     height: "35%",
     borderRadius: 20,
   },
+  loginHeader__Text: {},
 
   heading: {
     textAlign: "center",
