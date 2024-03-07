@@ -9,11 +9,11 @@ import MapView, { Marker } from "react-native-maps";
 /// FILE IMPORTS ///
 
 // DATA
-import RankData from "../../../assets/data/RankData.json";
+import RankData from "../../assets/data/RankData.json";
 // FILES
 import RankOverlay from "../../components/overlay/RankOverlay";
 //IMAGES
-import taxiRankIcon from "../../../assets/images/taxiRank.png";
+import taxiRankIcon from "../../assets/images/taxiRank.png";
 
 ///--///
 const LocalMaps = () => {

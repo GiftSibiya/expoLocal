@@ -6,7 +6,7 @@ import React from "react";
 ///--///
 
 /// FILE IMPORTS ///
-import Quantum from "../../../assets/images/quantum.jpg";
+import Quantum from "../../assets/images/quantum.jpg";
 ///--///
 
 const Destination = ({ destination }) => {

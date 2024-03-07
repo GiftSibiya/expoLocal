@@ -13,7 +13,7 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 // IMPORT FILES
-import googleImg from "../../../assets/logo/icons8-google-48.png";
+import googleImg from "../../assets/logo/icons8-google-48.png";
 //--//
 
 const SignUp = ({ navigation }) => {

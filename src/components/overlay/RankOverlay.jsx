@@ -5,8 +5,8 @@ import React from "react";
 /// FILES IMPORTS ///
 
 // JSON DATA FILES
-import RankData from "../../../assets/data/RankData.json";
-import taxis from "../../../assets/data/destinationData.json";
+import RankData from "../../assets/data/RankData.json";
+import taxis from "../../assets/data/destinationData.json";
 
 // COMPONENTS
 import Destination from "./Destination";
