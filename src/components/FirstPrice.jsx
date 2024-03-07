@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     height: 160,
     borderRadius: 20,
-    backgroundColor: "orange",
+    backgroundColor: "#00632e",
   },
 
   // FIRST ROW
@@ -169,6 +169,6 @@ const styles = StyleSheet.create({
     marginTop: 5,
     height: 380,
     borderRadius: 20,
-    backgroundColor: "orange",
+    backgroundColor: "#00632e",
   },
 });

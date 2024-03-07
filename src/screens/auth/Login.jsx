@@ -1,7 +1,9 @@
+// IMPORT DEPENDENCIES //
 import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
+  Image,
   TouchableOpacity,
   StyleSheet,
   TextInput,
@@ -9,6 +11,9 @@ import {
   KeyboardAvoidingView,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+// IMPORT FILES
+import googleImg from "../../../assets/logo/icons8-google-48.png";
+//--//
 
 const Login = ({ navigation }) => {
   const [email, setEmail] = useState("");
@@ -44,14 +49,7 @@ const Login = ({ navigation }) => {
   };
 
   const handleSignUp = () => {
-    fireApp
-      .createUserWithEmailAndPassword(email, password)
-      .then((userCredentials) => {
-        const user = userCredentials.user;
-        console.log(user.email);
-      })
-      .catch((error) => alert(error.message));
-    // navigation.navigate("SignUp");
+    navigation.navigate("SignUp");
   };
 
   ///--///
@@ -110,7 +108,10 @@ const Login = ({ navigation }) => {
           {/* -- */}
 
           {/* LOGIN ICONS */}
-          <View style={styles.loginIcons}></View>
+          <View style={styles.loginIcons}>
+            <Image source={googleImg} />
+            <Text style={styles.google_text}>Log In With Google</Text>
+          </View>
           {/* -- */}
 
           <View style={styles.signUpCon}>
@@ -128,7 +129,10 @@ const Login = ({ navigation }) => {
 export default Login;
 
 const styles = StyleSheet.create({
-  container: {},
+  container: {
+    display: "flex",
+    alignItems: "center",
+  },
 
   loginHeader: {
     backgroundColor: "#004721",
@@ -186,17 +190,20 @@ const styles = StyleSheet.create({
   formInput: {
     margin: 10,
     height: 60,
-    width: "90%",
+    width: 300,
     borderRadius: 15,
     padding: 10,
     backgroundColor: "#9DBC98",
   },
 
   loginBtn: {
-    marginVertical: 20,
+    display: "flex",
+    justifyContent: "center",
+    marginVertical: 10,
     backgroundColor: "#294B29",
     padding: 10,
-    width: 250,
+    width: 300,
+    height: 60,
     borderRadius: 10,
   },
 
@@ -209,10 +216,20 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
   },
-
+  google_text: {
+    fontSize: 20,
+    paddingHorizontal: 10,
+  },
   loginIcons: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
     borderWidth: 2,
-    height: "15%",
+    borderRadius: 10,
+    paddingVertical: 5,
+    width: 300,
+    marginVertical: 20,
   },
 
   noAccount: {
