@@ -1,25 +1,42 @@
-/// IDEPENDENCY IMPORTS ///
-
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
   TouchableOpacity,
   StyleSheet,
   TextInput,
+  Animated,
   KeyboardAvoidingView,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-///--///
 
-/// FUCTIONS ///
 const Login = ({ navigation }) => {
-  /// HOOKS ///
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const translateY = new Animated.Value(0);
 
-  ///--///
+  useEffect(() => {
+    const bounceAnimation = Animated.loop(
+      Animated.sequence([
+        Animated.timing(translateY, {
+          toValue: -10,
+          duration: 2000,
+          useNativeDriver: false,
+        }),
+        Animated.timing(translateY, {
+          toValue: 0,
+          duration: 600,
+          useNativeDriver: false,
+        }),
+      ])
+    );
+
+    bounceAnimation.start();
+
+    return () => {
+      bounceAnimation.stop();
+    };
+  }, [translateY]);
 
   /// FUCNTIONS ///
   const handleLogin = () => {
@@ -44,7 +61,21 @@ const Login = ({ navigation }) => {
       <SafeAreaView>
         <View style={styles.container}>
           <View style={styles.loginHeader}>
-            <Text style={styles.loginHeader__Text}>WELCOME BACK TO LOCAL</Text>
+            <Animated.View
+              style={[styles.logoHeader2, { transform: [{ translateY }] }]}
+            >
+              <Animated.View
+                style={[styles.logoHeader3, { transform: [{ translateY }] }]}
+              >
+                <Animated.View
+                  style={[styles.logoHeader4, { transform: [{ translateY }] }]}
+                >
+                  <Text style={styles.loginHeader__Text}>
+                    WELCOME BACK TO LOCAL
+                  </Text>
+                </Animated.View>
+              </Animated.View>
+            </Animated.View>
           </View>
           <Text style={styles.heading}>Sign In</Text>
 
@@ -54,7 +85,7 @@ const Login = ({ navigation }) => {
 
             <TextInput
               placeholder="Email"
-              style={styles.emailInput}
+              style={styles.formInput}
               value={email}
               onChange={(text) => setEmail(text)}
             ></TextInput>
@@ -63,7 +94,7 @@ const Login = ({ navigation }) => {
 
             <TextInput
               placeholder="Password"
-              style={styles.passwordInput}
+              style={styles.formInput}
               secureTextEntry={true}
               onChange={(text) => setPassword(text)}
               value={password}
@@ -101,15 +132,46 @@ const styles = StyleSheet.create({
 
   loginHeader: {
     backgroundColor: "#004721",
+    display: "flex",
+    justifyContent: "center",
     width: "100%",
     height: "35%",
     borderRadius: 20,
   },
-  loginHeader__Text: {},
+  logoHeader2: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#00632e",
+    width: "100%",
+    height: "80%",
+    borderRadius: 20,
+  },
+  logoHeader3: {
+    display: "felx",
+    justifyContent: "center",
+    backgroundColor: "#018a41",
+    width: "100%",
+    height: "60%",
+    borderRadius: 20,
+  },
+  logoHeader4: {
+    display: "felx",
+    justifyContent: "center",
+    width: "100%",
+    height: "60%",
+    borderRadius: 20,
+  },
+  loginHeader__Text: {
+    textAlign: "center",
+    color: "white",
+    fontWeight: "bold",
+    fontSize: 20,
+  },
 
   heading: {
     textAlign: "center",
-    fontSize: 20,
+    fontSize: 40,
     marginVertical: 20,
   },
 
@@ -121,18 +183,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 
-  emailInput: {
+  formInput: {
     margin: 10,
-    height: 50,
-    width: "90%",
-    borderRadius: 15,
-    padding: 10,
-    backgroundColor: "#9DBC98",
-  },
-
-  passwordInput: {
-    margin: 10,
-    height: 50,
+    height: 60,
     width: "90%",
     borderRadius: 15,
     padding: 10,
