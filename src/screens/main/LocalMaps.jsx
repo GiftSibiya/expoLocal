@@ -1,32 +1,60 @@
-/// DEPENDENCY IMPORTS ///
-
+/// Imports
+// Dependencies
 import { View, Text, StyleSheet, Image } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import MapView, { Marker } from "react-native-maps";
+import { db, collection, getDocs } from "../../../backend/Database";
 
-///--///
-
-/// FILE IMPORTS ///
+// Files
 
 // DATA
-import RankData from "../../assets/data/RankData.json";
+// import LocalRankData from "../../assets/data/RankData.json";
 // FILES
 import RankOverlay from "../../components/overlay/RankOverlay";
 //IMAGES
 import taxiRankIcon from "../../assets/images/taxiRank.png";
 
-///--///
+///--
+
 const LocalMaps = () => {
-  /// HOOKS ///
+  // Hooks
+  const [rankData, setRankData] = useState([]);
+  const [destData, setDestData] = useState([]);
 
   const [selectedRank, setSelectedRank] = useState(null);
   // console.log("RankData:", RankData);
 
-  ///--///
+  /// functions
+  // Get Rank From Firebase
+  const getRank = async () => {
+    const querySnapshot = await getDocs(collection(db, "RankData"));
+    const ranks = [];
+    querySnapshot.forEach((doc) => {
+      ranks.push(doc.data());
+    });
+    setRankData(ranks);
+  };
 
-  /// FUNCTIONS ///
+  // Get Destinations From Firebase
+  const getDestination = async () => {
+    const querySnapshot = await getDocs(collection(db, "DestinationData"));
+    const destinations = [];
+    querySnapshot.forEach((doc) => {
+      destinations.push(doc.data());
+    });
+    setDestData(destinations);
+  };
+  console.log(rankData);
+  console.log(destData);
 
-  ///--///
+  // Trigger Rank Get On Page Load
+  useEffect(() => {
+    console.log("Use Effect Is running");
+    getRank();
+    getDestination();
+  }, []);
+
+  ///--
 
   return (
     <View style={styles.container}>
@@ -45,15 +73,17 @@ const LocalMaps = () => {
         }}
       >
         {/* REDNERING A MARKER FOR EVERY TAXI RANK ITEM */}
-        {RankData.map((RankData) => (
+        {rankData.map((RankData) => (
           <Marker
-            key={RankData.id}
-            coordinate={RankData.coordinates}
+            key={RankData.rank_id}
+            coordinate={{
+              latitude: RankData.coordinates.latitude,
+              longitude: RankData.coordinates.longitude,
+            }}
             title={RankData.name}
             description={`Active Time: ${RankData.activeTime}`}
             onPress={() => {
               setSelectedRank(RankData);
-              // console.log("Marker Pressed:", selectedRank);
             }}
           >
             <Image source={taxiRankIcon} style={styles.rankIcon} />
@@ -62,7 +92,7 @@ const LocalMaps = () => {
       </MapView>
 
       {/* SELECTED OVERLAY COMPONENT */}
-      {selectedRank && <RankOverlay RankData={selectedRank.id} />}
+      {selectedRank && <RankOverlay RankData={selectedRank} />}
     </View>
   );
 };

@@ -1,30 +1,25 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const mongoose = require("mongoose");
-const crypto = require("crypto");
-const nodemailer = require("nodemailer");
-const cors = require("cors");
-const jwt = require("jsonwebtoken");
+// Imports
+import { initializeApp } from "firebase/app";
+import { getFirestore, collection, addDocs, getDocs } from "firebase/firestore";
+require("dotenv").config();
+//--
 
-/// CHANGING THIS TO USE FIREBASE //
+// Connection String
+const firebaseConfig = {
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID,
+};
 
-const app = express();
-const PORT = 4000;
-app.use(cors());
+//--
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
 
-mongoose
-  .connect("mongodb://localhost:27017", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => {
-    console.log("Connected To Local Mongo, Cahnge to mongo wena");
-  })
-  .catch((err) => [console.log("not connecting my G")]);
+// Initialize Cloud Firestore and get a reference to the service
+const db = getFirestore(app);
 
-app.listen(PORT, () => {
-  console.log(` server is turnong on at port ${PORT} `);
-});
+export { app, db, getFirestore, collection, addDocs, getDocs };
