@@ -1,20 +1,18 @@
 // Imports
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, addDocs, getDocs } from "firebase/firestore";
-require("dotenv").config();
+
 //--
 
 // Connection String
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_API_KEY,
-  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
-  projectId: process.env.REACT_APP_PROJECT_ID,
-  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
-  appId: process.env.REACT_APP_APP_ID,
+  apiKey: "AIzaSyB7ZmhpjRDJKrPrWjrOgEB8UUVEih8__90",
+  authDomain: "local-909ca.firebaseapp.com",
+  projectId: "local-909ca",
+  storageBucket: "local-909ca.appspot.com",
+  messagingSenderId: "527865656018",
+  appId: "1:527865656018:web:bba41778e6ab673e5f330b",
 };
-
-//--
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
