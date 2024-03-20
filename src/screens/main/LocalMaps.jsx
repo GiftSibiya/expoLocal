@@ -87,7 +87,7 @@ const LocalMaps = () => {
               description={`Active Time: ${RankData.activeTime}`}
               onPress={() => {
                 setSelectedRank(RankData);
-                console.log("Selected Rank:", RankData);
+                // console.log("Selected Rank:", RankData);
               }}
             >
               <Image source={taxiRankIcon} style={styles.rankIcon} />
@@ -96,7 +96,9 @@ const LocalMaps = () => {
         </MapView>
 
         {/* SELECTED OVERLAY COMPONENT */}
-        {selectedRank && <RankOverlay />}
+        {selectedRank && (
+          <RankOverlay RankData={selectedRank} DestinationData={destData} />
+        )}
       </View>
     </GestureHandlerRootView>
   );

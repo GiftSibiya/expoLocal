@@ -1,59 +1,59 @@
-// RankOverlay component
-import { Text, View, StyleSheet, ScrollView, useState } from "react-native";
-import React from "react";
+import { Text, View, StyleSheet, ScrollView } from "react-native";
+import React, { useState, useEffect } from "react";
 import { db, collection, getDocs } from "../../../backend/Database";
 
-const RankOverlay = () => {
-  // const [rankData, setRankData] = useState([]);
-  // const [destData, setDestData] = useState([]);
+const RankOverlay = ({ RankData, DestinationData }) => {
+  // useState hooks for managing state
+  const [selectedRank, setSelectedRank] = useState(null);
+  const [selectedDestinations, setSelectedDestinations] = useState([]);
 
-  const getRank = async () => {
-    const querySnapshot = await getDocs(collection(db, "RankData"));
-    const ranks = [];
-    querySnapshot.forEach((doc) => {
-      ranks.push(doc.data());
-    });
-    setRankData(ranks);
-  };
-
-  // Get Destinations From Firebase
-  const getDestination = async () => {
-    const querySnapshot = await getDocs(collection(db, "DestinationData"));
-    const destinations = [];
-    querySnapshot.forEach((doc) => {
-      destinations.push(doc.data());
-    });
-    setDestData(destinations);
-  };
-
-  // Extracting the selected rank ID
-  // const { rank_id: selectedRankId } = selectedId;
-
-  // Find the selected rank using the ID
-  // const selectedRank = RankData.find((rank) => rank.rank_id === selectedRankId);
-
-  // Find the selected taxis using the rank ID
-  // const selectedTaxis = taxis.find((rank) => rank.rank_id === selectedRankId);
-
-  // Extract destinations from selected taxis
-  // const selectedDestinations = selectedTaxis ? selectedTaxis.Taxis : [];
+  // useEffect hook to update selectedDestinations when selectedRank changes
+  useEffect(() => {
+    if (RankData && DestinationData) {
+      const { rank_id } = RankData;
+      const selectedTaxis = DestinationData.filter(
+        (dest) => dest.rank_id === rank_id
+      );
+      setSelectedDestinations(selectedTaxis);
+      console.log("Selected Destinations:", selectedDestinations);
+    }
+  }, [RankData, DestinationData]);
 
   return (
     <View style={styles.container}>
       <View style={styles.overlay}>
         {/* HEADER CONTENT */}
         <View style={styles.overlayHeader}>
+          {/* Rank Name */}
           <Text style={styles.rankName}>
-            {/* {selectedRank ? selectedRank.name : "Unknown Rank"} */}
+            {RankData ? RankData.name : "Unknown Rank"}
           </Text>
+          {/* -- */}
+
+          {/* Active Times */}
           <Text style={styles.rankTime}>
-            {/* {selectedRank ? `Active Time: ${selectedRank.activeTime}` : ""} */}
+            {RankData ? `Active Time: ${RankData.activeTime}` : ""}
           </Text>
+          {/* -- */}
         </View>
         <ScrollView style={styles.destinationList}>
-          {/* {selectedDestinations.map((destination, index) => (
-            <Destination key={index} destination={destination} />
-          ))} */}
+          {selectedDestinations.map((destinationData, index) => (
+            <View key={index}>
+              <Text style={styles.destinationHeader}>
+                {destinationData.destination}
+              </Text>
+              <ScrollView style={styles.taxiList}>
+                {destinationData.Taxis.map((taxi, taxiIndex) => (
+                  <View key={taxiIndex} style={styles.taxiItem}>
+                    <Text style={styles.taxiDestination}>
+                      {taxi.destination}
+                    </Text>
+                    <Text style={styles.taxiPrice}>Price: {taxi.price}</Text>
+                  </View>
+                ))}
+              </ScrollView>
+            </View>
+          ))}
         </ScrollView>
       </View>
     </View>
