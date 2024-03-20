@@ -1,14 +1,11 @@
 // RankOverlay component
 import { Text, View, StyleSheet, ScrollView, useState } from "react-native";
 import React from "react";
-import RankData from "../../assets/data/RankData.json";
-import taxis from "../../assets/data/destinationData.json";
 import { db, collection, getDocs } from "../../../backend/Database";
-import Destination from "./Destination";
 
-const RankOverlay = ({ selectedId }) => {
-  const [rankData, setRankData] = useState([]);
-  const [destData, setDestData] = useState([]);
+const RankOverlay = () => {
+  // const [rankData, setRankData] = useState([]);
+  // const [destData, setDestData] = useState([]);
 
   const getRank = async () => {
     const querySnapshot = await getDocs(collection(db, "RankData"));
@@ -30,16 +27,16 @@ const RankOverlay = ({ selectedId }) => {
   };
 
   // Extracting the selected rank ID
-  const { rank_id: selectedRankId } = selectedId;
+  // const { rank_id: selectedRankId } = selectedId;
 
   // Find the selected rank using the ID
-  const selectedRank = RankData.find((rank) => rank.rank_id === selectedRankId);
+  // const selectedRank = RankData.find((rank) => rank.rank_id === selectedRankId);
 
   // Find the selected taxis using the rank ID
-  const selectedTaxis = taxis.find((rank) => rank.rank_id === selectedRankId);
+  // const selectedTaxis = taxis.find((rank) => rank.rank_id === selectedRankId);
 
   // Extract destinations from selected taxis
-  const selectedDestinations = selectedTaxis ? selectedTaxis.Taxis : [];
+  // const selectedDestinations = selectedTaxis ? selectedTaxis.Taxis : [];
 
   return (
     <View style={styles.container}>
@@ -47,16 +44,16 @@ const RankOverlay = ({ selectedId }) => {
         {/* HEADER CONTENT */}
         <View style={styles.overlayHeader}>
           <Text style={styles.rankName}>
-            {selectedRank ? selectedRank.name : "Unknown Rank"}
+            {/* {selectedRank ? selectedRank.name : "Unknown Rank"} */}
           </Text>
           <Text style={styles.rankTime}>
-            {selectedRank ? `Active Time: ${selectedRank.activeTime}` : ""}
+            {/* {selectedRank ? `Active Time: ${selectedRank.activeTime}` : ""} */}
           </Text>
         </View>
         <ScrollView style={styles.destinationList}>
-          {selectedDestinations.map((destination, index) => (
+          {/* {selectedDestinations.map((destination, index) => (
             <Destination key={index} destination={destination} />
-          ))}
+          ))} */}
         </ScrollView>
       </View>
     </View>

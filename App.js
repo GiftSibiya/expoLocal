@@ -54,8 +54,8 @@ const MainStack = () => {
     <BottomTab.Navigator>
       <BottomTab.Screen name="TaxiMath" component={TaxiMathsStack} />
       <BottomTab.Screen name="LocalMaps" component={LocalMaps} />
-      <BottomTab.Screen name="Community" component={Community} />
-      <BottomTab.Screen name="Profile" component={Profile} />
+      {/* <BottomTab.Screen name="Community" component={Community} />
+      <BottomTab.Screen name="Profile" component={Profile} /> */}
     </BottomTab.Navigator>
   );
 };

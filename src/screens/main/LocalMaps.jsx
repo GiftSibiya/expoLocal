@@ -1,18 +1,20 @@
 /// Imports
 // Dependencies
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, StyleSheet, Text, Image } from "react-native";
 import React, { useEffect, useState } from "react";
 import MapView, { Marker } from "react-native-maps";
 import { db, collection, getDocs } from "../../../backend/Database";
 
 // Files
 
-// DATA
-// import LocalRankData from "../../assets/data/RankData.json";
 // FILES
 import RankOverlay from "../../components/overlay/RankOverlay";
 //IMAGES
 import taxiRankIcon from "../../assets/images/taxiRank.png";
+import {
+  GestureHandlerRootView,
+  TouchableOpacity,
+} from "react-native-gesture-handler";
 
 ///--
 
@@ -44,8 +46,8 @@ const LocalMaps = () => {
     });
     setDestData(destinations);
   };
-  console.log(rankData);
-  console.log(destData);
+  // console.log(rankData);
+  // console.log(destData);
 
   // Trigger Rank Get On Page Load
   useEffect(() => {
@@ -57,43 +59,46 @@ const LocalMaps = () => {
   ///--
 
   return (
-    <View style={styles.container}>
-      {/* THIS IS THE MAIN MAP VIEW WITH THE ORIGION SET AT TEMBISA*/}
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <View style={styles.container}>
+        {/* THIS IS THE MAIN MAP VIEW WITH THE ORIGION SET AT TEMBISA*/}
 
-      <MapView
-        style={styles.map}
-        initialRegion={{
-          latitude: -26.007073,
-          longitude: 28.183106,
-          latitudeDelta: 0.0922,
-          longitudeDelta: 0.0421,
-        }}
-        onPress={() => {
-          setSelectedRank(null);
-        }}
-      >
-        {/* REDNERING A MARKER FOR EVERY TAXI RANK ITEM */}
-        {rankData.map((RankData) => (
-          <Marker
-            key={RankData.rank_id}
-            coordinate={{
-              latitude: RankData.coordinates.latitude,
-              longitude: RankData.coordinates.longitude,
-            }}
-            title={RankData.name}
-            description={`Active Time: ${RankData.activeTime}`}
-            onPress={() => {
-              setSelectedRank(RankData);
-            }}
-          >
-            <Image source={taxiRankIcon} style={styles.rankIcon} />
-          </Marker>
-        ))}
-      </MapView>
+        <MapView
+          style={styles.map}
+          initialRegion={{
+            latitude: -26.007073,
+            longitude: 28.183106,
+            latitudeDelta: 0.0922,
+            longitudeDelta: 0.0421,
+          }}
+          onPress={() => {
+            setSelectedRank(null);
+          }}
+        >
+          {/* REDNERING A MARKER FOR EVERY TAXI RANK ITEM */}
+          {rankData.map((RankData) => (
+            <Marker
+              key={RankData.rank_id}
+              coordinate={{
+                latitude: RankData.coordinates.latitude,
+                longitude: RankData.coordinates.longitude,
+              }}
+              title={RankData.name}
+              description={`Active Time: ${RankData.activeTime}`}
+              onPress={() => {
+                setSelectedRank(RankData);
+                console.log("Selected Rank:", RankData);
+              }}
+            >
+              <Image source={taxiRankIcon} style={styles.rankIcon} />
+            </Marker>
+          ))}
+        </MapView>
 
-      {/* SELECTED OVERLAY COMPONENT */}
-      {selectedRank && <RankOverlay RankData={selectedRank} />}
-    </View>
+        {/* SELECTED OVERLAY COMPONENT */}
+        {selectedRank && <RankOverlay />}
+      </View>
+    </GestureHandlerRootView>
   );
 };
 
@@ -105,5 +110,22 @@ const styles = StyleSheet.create({
   rankIcon: {
     height: 50,
     width: 50,
+  },
+  refreshBtn: {
+    position: "absolute",
+    top: 0,
+    height: 80,
+    width: 100,
+    border: 2,
+    borderRadius: 20,
+    backgroundColor: "green",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  refreshTxt: {
+    color: "white",
+    fontWeight: "bold",
+    fontSize: 20,
   },
 });
