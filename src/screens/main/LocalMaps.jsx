@@ -75,13 +75,16 @@ const LocalMaps = () => {
             setSelectedRank(null);
           }}
         >
+          {/* coordinates
+_lat:-25.988162
+_long:28.17547 */}
           {/* REDNERING A MARKER FOR EVERY TAXI RANK ITEM */}
           {rankData.map((RankData) => (
             <Marker
               key={RankData.rank_id}
               coordinate={{
-                latitude: RankData.coordinates.latitude,
-                longitude: RankData.coordinates.longitude,
+                latitude: RankData.coordinates._lat,
+                longitude: RankData.coordinates._long,
               }}
               title={RankData.name}
               description={`Active Time: ${RankData.activeTime}`}
