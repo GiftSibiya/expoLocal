@@ -9,7 +9,7 @@ import React from "react";
 import Quantum from "../../assets/images/quantum.jpg";
 ///--///
 
-const Destination = ({ destination }) => {
+const Destination = ({ name, price }) => {
   /// FUCTIONS ///
 
   // console.log(destination.price);
@@ -22,11 +22,11 @@ const Destination = ({ destination }) => {
         <Image source={Quantum} style={styles.taxiImage}></Image>
       </View>
       <View style={styles.destinationInfo}>
-        <Text style={styles.destinationText}> {destination.destination}</Text>
+        <Text style={styles.destinationText}> {name}</Text>
       </View>
 
       <View style={styles.destinationCost}>
-        <Text style={styles.cost}>R{destination.price}</Text>
+        <Text style={styles.cost}>R{price}</Text>
       </View>
     </View>
   );

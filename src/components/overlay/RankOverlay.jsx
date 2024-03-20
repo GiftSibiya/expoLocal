@@ -1,6 +1,7 @@
 import { Text, View, StyleSheet, ScrollView } from "react-native";
 import React, { useState, useEffect } from "react";
 import { db, collection, getDocs } from "../../../backend/Database";
+import Destination from "./Destination";
 
 const RankOverlay = ({ RankData, DestinationData }) => {
   // useState hooks for managing state
@@ -44,11 +45,8 @@ const RankOverlay = ({ RankData, DestinationData }) => {
               </Text>
               <ScrollView style={styles.taxiList}>
                 {destinationData.Taxis.map((taxi, taxiIndex) => (
-                  <View key={taxiIndex} style={styles.taxiItem}>
-                    <Text style={styles.taxiDestination}>
-                      {taxi.destination}
-                    </Text>
-                    <Text style={styles.taxiPrice}>Price: {taxi.price}</Text>
+                  <View key={taxiIndex}>
+                    <Destination name={taxi.destination} price={taxi.price} />
                   </View>
                 ))}
               </ScrollView>
